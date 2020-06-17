@@ -1,0 +1,20 @@
+import smtplib
+
+host = "smtp.gmail.com"
+port = 587
+#username = "pythontest377@gmail.com"
+#password = REDACTED
+#to_list = ["pythontest377@gmail.com"]
+
+username = input('What is your email address? ')
+password = input('Please enter your password: ')
+to_list = []
+to_list.append(input("Please enter the email address you want to email: ")) #can add a while loop to add more than email address
+
+email_conn = smtplib.SMTP(host, port)
+email_conn.ehlo()
+email_conn.starttls()
+email_conn.login(username, password)
+message = input('What message do you want to send in the email?\n')
+email_conn.sendmail(username, to_list, message)
+email_conn.quit()
